@@ -7,6 +7,13 @@ project(opencl_image_filter)
 
 add_executable(opencl_image_filter config_handle.cpp png_handle.cpp main.cpp)
 
+## POST_BUILD command
+add_custom_command(TARGET opencl_image_filter POST_BUILD
+                   COMMAND ${CMAKE_COMMAND} -E copy_if_different
+                       ${CMAKE_CURRENT_SOURCE_DIR}/filtre_LoG_opencl.cl
+                       $<TARGET_FILE_DIR:opencl_image_filter>
+                   )
+
 ## Add subdirectorys
 add_subdirectory(libpng-1.5.14)
 
