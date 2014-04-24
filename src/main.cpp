@@ -205,7 +205,6 @@ int main(int argc, char** argv)
                             exit(ocl_error);
                         }
                         // Lancement du kernel
-		      std::cout << "here" << std::endl;
                         ocl_error = clEnqueueNDRangeKernel(ocl_queue, ocl_LoG_filter_kernel, 1, NULL,&global_ws,NULL, 0, NULL, &krun_event);
                         if (ocl_error != CL_SUCCESS) {
                             std::cout << "Error starting kernel: " << descriptionOfError(ocl_error) << std::endl;
